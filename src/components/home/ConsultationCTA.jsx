@@ -2,34 +2,34 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
-import DOMPurify from 'dompurify';
-
 export default function ConsultationCTA() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [hasConsent, setHasConsent] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // XSS Sanitization
-    const sanitizedName = DOMPurify.sanitize(name.trim());
-    const sanitizedPhone = DOMPurify.sanitize(phone.trim());
 
-    if (!sanitizedName || !sanitizedPhone) {
-      alert('Mohon isi nama dan no. WhatsApp Anda');
+    const normalizedName = name.trim().replace(/\s+/g, ' ');
+    const normalizedPhone = phone.replace(/\D/g, '');
+
+    if (normalizedName.length < 2 || normalizedName.length > 100) {
+      alert('Masukkan nama lengkap antara 2 hingga 100 karakter.');
       return;
     }
 
-    // CWE-20: Improper Input Validation
-    const phoneRegex = /^[0-9\-\+\s\(\)]{8,15}$/;
-    if (!phoneRegex.test(sanitizedPhone)) {
-      alert('Format nomor WhatsApp tidak valid. Harap gunakan hanya angka (8-15 digit).');
+    if (normalizedPhone.length < 8 || normalizedPhone.length > 15) {
+      alert('Format nomor WhatsApp tidak valid. Harap gunakan 8-15 digit angka.');
       return;
     }
 
-    const message = `Halo NARA Studio, saya ${sanitizedName} ingin berkonsultasi mengenai proyek interior. (Nomor kontak: ${sanitizedPhone})`;
+    if (!hasConsent) {
+      alert('Mohon setujui pengiriman data ke WhatsApp terlebih dahulu.');
+      return;
+    }
+
+    const message = `Halo NARA Studio, saya ${normalizedName} ingin berkonsultasi mengenai proyek interior. (Nomor kontak: ${normalizedPhone})`;
     const encodedMessage = encodeURIComponent(message);
-    // Secure external link with noopener,noreferrer
     window.open(`https://wa.me/6281112345678?text=${encodedMessage}`, '_blank', 'noopener,noreferrer');
   };
 
@@ -62,6 +62,8 @@ export default function ConsultationCTA() {
                 aria-label="Nama" 
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                autoComplete="name"
+                maxLength={100}
                 required
               />
             </div>
@@ -72,12 +74,29 @@ export default function ConsultationCTA() {
                 aria-label="No. WhatsApp" 
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
+                autoComplete="tel"
+                inputMode="tel"
+                maxLength={24}
                 required
               />
             </div>
-            <button type="submit" className="btn-primary">Mulai Konsultasi</button>
+            <label className="cta-block__consent">
+              <input
+                type="checkbox"
+                checked={hasConsent}
+                onChange={(e) => setHasConsent(e.target.checked)}
+                required
+              />
+              <span>
+                Saya setuju nama dan nomor WhatsApp saya dikirim ke WhatsApp untuk memulai konsultasi. Baca{' '}
+                <a href="/kebijakan-privasi">Kebijakan Privasi</a>.
+              </span>
+            </label>
+            <div className="cta-block__actions">
+              <button type="submit" className="btn-primary">Mulai Konsultasi</button>
+              <p className="cta-block__note">Gratis, tanpa komitmen. Kami akan menghubungi Anda dalam 1x24 jam.</p>
+            </div>
           </form>
-          <p className="cta-block__note">Gratis, tanpa komitmen. Kami akan menghubungi Anda dalam 1x24 jam.</p>
         </div>
       </div>
     </section>

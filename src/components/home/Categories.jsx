@@ -31,6 +31,7 @@ export default function Categories() {
             </div>
           ))}
         </div>
+        <p className="carousel-hint" aria-hidden="true">Geser untuk melihat lainnya <span>→</span></p>
       </div>
     </section>
   );

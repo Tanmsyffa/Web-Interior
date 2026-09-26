@@ -16,17 +16,19 @@ export const metadata = {
   description: 'Ruang yang dirancang untuk hidup lebih baik. Desain interior dan furniture custom yang dirancang sesuai karakter, kebutuhan, dan cara Anda menggunakan ruang.',
 };
 
+const contentSecurityPolicy = process.env.NODE_ENV === 'development'
+  ? "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self';"
+  : "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self';";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="id" className={`${manrope.variable} ${dmSans.variable}`}>
       <head>
-        {/* Content Security Policy (CSP) for XSS and Injection Protection */}
+        {/* Fallback CSP. The deployment server sends the authoritative policy. */}
         <meta 
           httpEquiv="Content-Security-Policy" 
-          content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';" 
+          content={contentSecurityPolicy}
         />
-        {/* Security headers equivalents for static HTML */}
-        <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
       </head>
       <body>

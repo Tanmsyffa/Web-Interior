@@ -15,7 +15,7 @@ export default function KebijakanPrivasi() {
           <div className="container">
             <p className="section-label" style={{ color: 'var(--color-clay)' }}>Legal</p>
             <h1>Kebijakan Privasi</h1>
-            <p className="legal-subtitle">Diperbarui pada September 2024</p>
+            <p className="legal-subtitle">Diperbarui pada 26 September 2026</p>
           </div>
         </div>
 
@@ -31,27 +31,26 @@ export default function KebijakanPrivasi() {
             <div className="legal-content">
               <div className="legal-content__block">
                 <h3>1. Informasi yang Kami Kumpulkan</h3>
-                <p>Kami mengumpulkan informasi yang Anda berikan secara langsung melalui formulir konsultasi, termasuk nama, nomor telepon, dan alamat email. Informasi ini digunakan semata-mata untuk merespons permintaan konsultasi Anda dengan presisi.</p>
+                <p>Formulir konsultasi meminta nama dan nomor WhatsApp. Situs ini tidak mengirimkan data formulir ke server atau basis data website; setelah Anda menyetujui pengiriman data, informasi tersebut digunakan untuk membuat pesan konsultasi di WhatsApp.</p>
               </div>
 
               <div className="legal-content__block">
                 <h3>2. Penggunaan Informasi</h3>
                 <p>Informasi yang dikumpulkan digunakan secara eksklusif untuk:</p>
                 <ul>
-                  <li>Menghubungi Anda terkait layanan desain interior dan custom furniture.</li>
-                  <li>Menjadwalkan sesi konsultasi awal dengan tim desainer kami.</li>
-                  <li>Memberikan pembaruan atau penawaran relevan mengenai proyek yang sedang berjalan.</li>
+                  <li>Membuka percakapan konsultasi melalui WhatsApp setelah Anda memberikan persetujuan.</li>
+                  <li>Memungkinkan tim NARA Studio menindaklanjuti konsultasi yang Anda minta.</li>
                 </ul>
               </div>
 
               <div className="legal-content__block">
                 <h3>3. Perlindungan Data</h3>
-                <p>NARA Studio mengutamakan kerahasiaan Anda. Kami menerapkan standar keamanan internal untuk melindungi informasi pribadi Anda. Data Anda tidak akan diperjualbelikan atau dibagikan kepada pihak ketiga untuk tujuan pemasaran tanpa persetujuan eksplisit dari Anda, kecuali diwajibkan oleh hukum yang berlaku.</p>
+                <p>Pengiriman data ke WhatsApp adalah bagian dari alur konsultasi yang Anda pilih dan tunduk pula pada kebijakan privasi WhatsApp. NARA Studio tidak menggunakan data formulir untuk pemasaran pihak ketiga tanpa persetujuan Anda, kecuali diwajibkan oleh hukum yang berlaku.</p>
               </div>
 
               <div className="legal-content__block">
                 <h3>4. Penghapusan Data</h3>
-                <p>Anda memiliki hak untuk meminta penghapusan informasi kontak Anda dari basis data kami kapan saja setelah proyek selesai atau jika konsultasi tidak berlanjut. Silakan hubungi tim kami untuk proses ini.</p>
+                <p>Anda dapat meminta penghapusan informasi kontak yang dikelola oleh NARA Studio kapan saja. Untuk menghapus riwayat atau data pada layanan WhatsApp, gunakan pula kontrol privasi yang disediakan WhatsApp.</p>
               </div>
 
               <div className="legal-content__block">

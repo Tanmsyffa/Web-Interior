@@ -29,6 +29,7 @@ export default function TestimonialCarousel() {
             </div>
           ))}
         </div>
+        <p className="carousel-hint carousel-hint--light" aria-hidden="true">Geser untuk melihat lainnya <span>→</span></p>
       </div>
     </section>
   );
