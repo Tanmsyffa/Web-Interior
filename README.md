@@ -1,50 +1,15 @@
-# Interior Studio Web
+# NARA Studio
 
-Static premium interior design website built with Next.js.
+[NARA Studio] adalah website portfolio untuk studio desain interior dan custom furniture. Situs ini membantu calon klien mengenal layanan, melihat arah visual proyek, memahami alur kerja, lalu memulai konsultasi awal melalui WhatsApp.
 
-## Goal
+## Tentang NARA Studio
 
-Create an original interior design and custom furniture website inspired by the service-flow and content category of Dekoruma Interior Premium, without reproducing its visual identity.
+NARA Studio berfokus pada ruang hunian dan komersial yang dirancang berdasarkan kebutuhan, kebiasaan, serta karakter penggunanya. Pendekatannya memadukan perencanaan ruang, pemilihan material, furniture custom, dan pelaksanaan terintegrasi dari konsep hingga instalasi.
 
-## Principles
+Layanan yang ditampilkan meliputi:
 
-- Original brand
-- Original color system
-- Editorial interior aesthetic
-- No gradients
-- No AI-slop UI
-- No database
-- No API
-- Local static images
-- JavaScript + JSX
-- Responsive
-- Accessible
-
-## Start
-
-```bash
-npm install
-npm run dev
-```
-
-## Build
-
-```bash
-npm run build
-```
-
-Static output is generated according to the Next.js static export configuration.
-
-## Assets
-
-Place images in:
-
-```text
-public/images/
-```
-
-Use descriptive filenames and consistent image ratios.
-
-## Important
-
-The current brand name `NARA Studio` is a working placeholder and should be checked for trademark/domain availability before launch.
+- Kitchen set dan interior rumah
+- Interior apartemen
+- Interior kantor, retail, dan hospitality
+- Furniture custom sesuai dimensi ruang
+- Desain modern kontemporer, modern klasik, dan Japandi natural

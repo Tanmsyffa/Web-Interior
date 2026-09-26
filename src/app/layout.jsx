@@ -11,9 +11,26 @@ const dmSans = DM_Sans({
   variable: '--font-dm-sans',
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://web-interior-azure.vercel.app';
+const siteDescription = 'Ruang yang dirancang untuk hidup lebih baik. Desain interior dan furniture custom yang dirancang sesuai karakter, kebutuhan, dan cara Anda menggunakan ruang.';
+
 export const metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'NARA Studio | Interior Design & Custom Furniture',
-  description: 'Ruang yang dirancang untuk hidup lebih baik. Desain interior dan furniture custom yang dirancang sesuai karakter, kebutuhan, dan cara Anda menggunakan ruang.',
+  description: siteDescription,
+  openGraph: {
+    type: 'website',
+    locale: 'id_ID',
+    url: '/',
+    siteName: 'NARA Studio',
+    title: 'NARA Studio | Interior Design & Custom Furniture',
+    description: siteDescription,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'NARA Studio | Interior Design & Custom Furniture',
+    description: siteDescription,
+  },
 };
 
 const contentSecurityPolicy = process.env.NODE_ENV === 'development'
