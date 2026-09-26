@@ -44,3 +44,10 @@ next-env.d.ts
 docs/
 AGENTS.md
 CLAUDE.md
+
+# playwright
+/playwright-report/
+/test-results/
+
+# agents
+.agents/

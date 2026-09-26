@@ -12,7 +12,7 @@ export default function PortofolioPage() {
     <>
       <Header />
       <main style={{ paddingTop: '80px' }}>
-        <Projects />
+        <Projects showViewAll={false} />
       </main>
       <Footer />
     </>

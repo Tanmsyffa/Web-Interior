@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Hindari mesin pencari dari mengindeks file konfigurasi atau repositori jika tidak sengaja terekspos
+Disallow: /.git/
+Disallow: /.env
+Disallow: /*.json$
+Disallow: /_next/
+Disallow: /README.md
+
+# Sitemaps
+# Sitemap: https://narastudio.id/sitemap.xml

@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
         {/* Content Security Policy (CSP) for XSS and Injection Protection */}
         <meta 
           httpEquiv="Content-Security-Policy" 
-          content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none';" 
+          content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';" 
         />
         {/* Security headers equivalents for static HTML */}
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />

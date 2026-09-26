@@ -1,6 +1,4 @@
-'use client';
 import Link from 'next/link';
-import { useState } from 'react';
 
 const IconMail = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
@@ -18,54 +16,9 @@ const IconInstagram = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
 );
 
-import DOMPurify from 'dompurify';
-
 export default function Footer() {
-  const [email, setEmail] = useState('');
-
-  const handleNewsletterSubmit = (e) => {
-    e.preventDefault();
-    if (!email) return;
-
-    // XSS Sanitization
-    const sanitizedEmail = DOMPurify.sanitize(email.trim());
-
-    // Input Validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(sanitizedEmail)) {
-      alert('Format email tidak valid.');
-      return;
-    }
-
-    const message = `Halo NARA Studio, saya ingin berlangganan inspirasi interior. (Email: ${sanitizedEmail})`;
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/6281112345678?text=${encodedMessage}`, '_blank', 'noopener,noreferrer');
-    setEmail('');
-  };
-
   return (
     <footer className="site-footer">
-      {/* Top: Newsletter strip */}
-      <div className="footer-newsletter">
-        <div className="container footer-newsletter__inner">
-          <div>
-            <h3 className="footer-newsletter__title">Dapatkan inspirasi interior terbaru.</h3>
-            <p className="footer-newsletter__sub">Tips desain, tren material, dan proyek terbaru kami langsung ke inbox Anda.</p>
-          </div>
-          <form className="footer-newsletter__form" onSubmit={handleNewsletterSubmit}>
-            <input 
-              type="email" 
-              placeholder="Alamat email Anda" 
-              aria-label="Email untuk newsletter" 
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <button type="submit" className="btn-primary" style={{ height: '44px', flexShrink: 0 }}>Berlangganan</button>
-          </form>
-        </div>
-      </div>
-
       {/* Main footer content */}
       <div className="container">
         <div className="footer-main">

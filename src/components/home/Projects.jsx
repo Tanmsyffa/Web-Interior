@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { projects } from '@/data/content';
 
-export default function Projects() {
+export default function Projects({ showViewAll = true }) {
   const featured = projects[0];
   const supporting = projects.slice(1);
 
@@ -14,7 +14,9 @@ export default function Projects() {
             <p className="section-label">Portofolio</p>
             <h2>Proyek Terpilih</h2>
           </div>
-          <Link href="/portofolio" className="btn-secondary btn-secondary--dark">Lihat Semua Portofolio</Link>
+          {showViewAll && (
+            <Link href="/portofolio" className="btn-secondary btn-secondary--dark">Lihat Semua Portofolio</Link>
+          )}
         </div>
 
         <div className="projects-grid">
