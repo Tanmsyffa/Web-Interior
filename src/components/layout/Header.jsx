@@ -75,7 +75,7 @@ export default function Header() {
     <>
       <header className={`site-header ${headerClass}`}>
         <Link href="/" className="site-header__logo">
-          NARA<span>STUDIO</span>
+          Griyacipta Kreasi Perdana
         </Link>
 
         <nav className="site-header__nav" aria-label="Navigasi utama">

@@ -7,6 +7,3 @@ Disallow: /.env
 Disallow: /*.json$
 Disallow: /_next/
 Disallow: /README.md
-
-# Sitemaps
-# Sitemap: https://narastudio.id/sitemap.xml

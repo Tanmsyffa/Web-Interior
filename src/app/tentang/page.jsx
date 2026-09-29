@@ -1,22 +1,18 @@
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Intro from '@/components/home/Intro';
-import Principles from '@/components/home/Principles';
-import AreaCoverage from '@/components/home/AreaCoverage';
 
 export const metadata = {
-  title: 'Tentang Kami | NARA Studio',
-  description: 'Tentang NARA Studio, prinsip desain, dan area cakupan layanan kami.',
+  title: 'Tentang Kami | Griyacipta Kreasi Perdana',
+  description: 'Tentang Griyacipta Kreasi Perdana dan pendekatan kami dalam merancang interior serta custom furniture.',
 };
 
 export default function TentangPage() {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: '80px' }}>
+      <main className="page-with-header">
         <Intro />
-        <Principles />
-        <AreaCoverage />
       </main>
       <Footer />
     </>

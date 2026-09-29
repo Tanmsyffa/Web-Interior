@@ -8,8 +8,17 @@ export default function Intro() {
             <h2>Menghadirkan keheningan dan harmoni di setiap sudut ruang.</h2>
           </div>
           <div>
-            <p style={{ fontSize: '18px', lineHeight: 1.65, color: 'var(--color-ink-soft)' }}>
-              NARA Studio memadukan pendekatan arsitektural dengan pemahaman mendalam tentang rutinitas harian. Kami percaya bahwa ruang yang baik tidak hanya indah dilihat, tetapi juga nyaman dirasakan dan dihidupi sehari-hari.
+            <p
+              style={{
+                fontSize: "18px",
+                lineHeight: 1.65,
+                color: "var(--color-ink-soft)",
+              }}
+            >
+              <b>Griyacipta Kreasi Perdana</b> memadukan pendekatan arsitektural dengan
+              pemahaman mendalam tentang rutinitas harian. Kami percaya bahwa
+              ruang yang baik tidak hanya indah dilihat, tetapi juga nyaman
+              dirasakan dan dihidupi sehari-hari.
             </p>
             <div className="intro-meta">
               <div className="intro-meta__item">

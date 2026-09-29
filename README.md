@@ -1,10 +1,10 @@
-# NARA Studio
+# Griyacipta Kreasi Perdana
 
-[NARA Studio] adalah website portfolio untuk studio desain interior dan custom furniture. Situs ini membantu calon klien mengenal layanan, melihat arah visual proyek, memahami alur kerja, lalu memulai konsultasi awal melalui WhatsApp.
+[Griyacipta Kreasi Perdana] adalah website portfolio untuk studio desain interior dan custom furniture. Situs ini membantu calon klien mengenal layanan, melihat arah visual proyek, memahami alur kerja, lalu memulai konsultasi awal melalui WhatsApp.
 
-## Tentang NARA Studio
+## Tentang Griyacipta Kreasi Perdana
 
-NARA Studio berfokus pada ruang hunian dan komersial yang dirancang berdasarkan kebutuhan, kebiasaan, serta karakter penggunanya. Pendekatannya memadukan perencanaan ruang, pemilihan material, furniture custom, dan pelaksanaan terintegrasi dari konsep hingga instalasi.
+Griyacipta Kreasi Perdana berfokus pada ruang hunian dan komersial yang dirancang berdasarkan kebutuhan, kebiasaan, serta karakter penggunanya. Pendekatannya memadukan perencanaan ruang, pemilihan material, furniture custom, dan pelaksanaan terintegrasi dari konsep hingga instalasi.
 
 Layanan yang ditampilkan meliputi:
 

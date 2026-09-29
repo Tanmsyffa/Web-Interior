@@ -1,10 +1,11 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import HorizontalCarousel from '@/components/ui/HorizontalCarousel';
 import { projects } from '@/data/content';
+import PortfolioCard from '@/components/portfolio/PortfolioCard';
 
 export default function Projects({ showViewAll = true }) {
   const featured = projects[0];
-  const supporting = projects.slice(1);
+  const supporting = projects.slice(1, 3);
 
   return (
     <section id="portfolio" className="section section--sand">
@@ -14,57 +15,12 @@ export default function Projects({ showViewAll = true }) {
             <p className="section-label">Portofolio</p>
             <h2>Proyek Terpilih</h2>
           </div>
-          {showViewAll && (
-            <Link href="/portofolio" className="btn-secondary btn-secondary--dark">Lihat Semua Portofolio</Link>
-          )}
+          {showViewAll && <Link href="/portofolio" className="btn-secondary btn-secondary--dark">Lihat Semua Portofolio</Link>}
         </div>
-
-        <div className="projects-grid">
-          {/* Featured */}
-          <div className="project-card project-card--featured">
-            <div className="project-card__image">
-              <Image
-                src={featured.image}
-                alt={featured.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 1280px"
-                style={{ objectFit: 'cover' }}
-              />
-            </div>
-            <div className="project-card__meta">
-              <div>
-                <h3>{featured.title}</h3>
-                <p>{featured.description}</p>
-              </div>
-              <div className="project-card__tag">
-                {featured.category} &middot; {featured.location}
-              </div>
-            </div>
-          </div>
-
-          {/* Supporting */}
-          {supporting.map(project => (
-            <div key={project.slug} className="project-card">
-              <div className="project-card__image">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 640px"
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
-              <div className="project-card__meta">
-                <div>
-                  <h3>{project.title}</h3>
-                </div>
-                <div className="project-card__tag">
-                  {project.category} &middot; {project.location}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <HorizontalCarousel className="projects-grid" label="proyek terpilih">
+          <PortfolioCard project={featured} featured refSource="beranda" />
+          {supporting.map((project) => <PortfolioCard key={project.slug} project={project} showDescription={false} refSource="beranda" />)}
+        </HorizontalCarousel>
       </div>
     </section>
   );
