@@ -13,7 +13,7 @@ const dmSans = DM_Sans({
 });
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://web-interior-azure.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://griyacipta-kreasi-perdana.vercel.app";
 const socialImage = new URL('/opengraph-image.png', siteUrl).toString();
 const twitterImage = new URL('/twitter-image.png', siteUrl).toString();
 const siteDescription =
