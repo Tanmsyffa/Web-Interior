@@ -1,5 +1,6 @@
 import { Manrope, DM_Sans } from "next/font/google";
 import "./globals.css";
+import ScrollToTop from "@/components/layout/ScrollToTop";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -17,6 +18,13 @@ const socialImage = new URL('/opengraph-image.png', siteUrl).toString();
 const twitterImage = new URL('/twitter-image.png', siteUrl).toString();
 const siteDescription =
   "Ruang yang dirancang untuk hidup lebih baik. Desain interior dan furniture custom yang dirancang sesuai karakter, kebutuhan, dan cara Anda menggunakan ruang.";
+
+export const viewport = {
+  themeColor: '#f7f5f0',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
@@ -56,7 +64,10 @@ export default function RootLayout({ children }) {
         />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
       </head>
-      <body>{children}</body>
+      <body>
+        <ScrollToTop />
+        {children}
+      </body>
     </html>
   );
 }

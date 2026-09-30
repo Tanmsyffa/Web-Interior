@@ -1,5 +1,6 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import LegalNav from "@/components/layout/LegalNav";
 
 export const metadata = {
   title: "Kebijakan Privasi | Griyacipta Kreasi Perdana",
@@ -24,16 +25,7 @@ export default function KebijakanPrivasi() {
 
         <div className="container">
           <div className="legal-layout">
-            <aside className="legal-sidebar">
-              <nav className="legal-nav">
-                <a href="/kebijakan-privasi" className="legal-nav__link active">
-                  Kebijakan Privasi
-                </a>
-                <a href="/syarat-ketentuan" className="legal-nav__link">
-                  Syarat &amp; Ketentuan
-                </a>
-              </nav>
-            </aside>
+            <LegalNav />
 
             <div className="legal-content">
               <div className="legal-content__block">
@@ -103,3 +95,4 @@ export default function KebijakanPrivasi() {
     </>
   );
 }
+

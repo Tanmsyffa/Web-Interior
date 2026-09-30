@@ -14,13 +14,11 @@ export default function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
-
-    const timer = window.setInterval(() => {
+    const timer = setInterval(() => {
       setActiveSlide((current) => (current + 1) % heroSlides.length);
     }, 6500);
 
-    return () => window.clearInterval(timer);
+    return () => clearInterval(timer);
   }, []);
 
   return (

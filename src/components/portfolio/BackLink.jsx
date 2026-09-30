@@ -6,13 +6,13 @@ import { useRouter } from 'next/navigation';
 const returnRoutes = {
   beranda: '/',
   gaya: '/gaya',
-  kategori: '/kategori',
+  kategori: '/portofolio',
   portofolio: '/portofolio',
 };
 
 function getReturnHref(reference, fallbackHref) {
   if (returnRoutes[reference]) return returnRoutes[reference];
-  if (/^kategori-[a-z0-9-]+$/.test(reference ?? '')) return `/kategori/${reference.slice('kategori-'.length)}`;
+  if (/^kategori-[a-z0-9-]+$/.test(reference ?? '')) return `/portofolio?kategori=${reference.slice('kategori-'.length)}`;
   return fallbackHref;
 }
 
