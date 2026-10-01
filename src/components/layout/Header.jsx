@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 
 const navLinks = [
   { href: '/layanan', label: 'Layanan' },
@@ -13,15 +14,38 @@ const navLinks = [
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const menuButtonRef = useRef(null);
   const drawerRef = useRef(null);
   const pathname = usePathname();
   const isHomePage = pathname === '/';
 
+  // Handle scroll detection: hide on scroll down, show on scroll up
   useEffect(() => {
+    let lastScrollY = typeof window !== 'undefined' ? window.scrollY : 0;
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 60);
+      const currentScrollY = Math.max(0, window.scrollY);
+
+      // Solid background after 20px
+      setScrolled(currentScrollY > 20);
+
+      // Auto-hide on scroll down, show on scroll up
+      if (currentScrollY > 80) {
+        if (currentScrollY > lastScrollY + 6) {
+          // Scrolling down
+          setHidden(true);
+        } else if (currentScrollY < lastScrollY - 6) {
+          // Scrolling up
+          setHidden(false);
+        }
+      } else {
+        // At or near top, always show navbar
+        setHidden(false);
+      }
+
+      lastScrollY = currentScrollY;
     };
 
     handleScroll();
@@ -29,6 +53,12 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close drawer on route change
+  useEffect(() => {
+    setDrawerOpen(false);
+  }, [pathname]);
+
+  // Drawer accessibility & keyboard traps
   useEffect(() => {
     if (!drawerOpen) return undefined;
 
@@ -68,41 +98,76 @@ export default function Header() {
     };
   }, [drawerOpen]);
 
-  const closeDrawer = () => setDrawerOpen(false);
-  const headerClass = (isHomePage && !scrolled) ? 'site-header--transparent' : 'site-header--scrolled';
+  const closeDrawer = () => {
+    if (document.activeElement && drawerRef.current?.contains(document.activeElement)) {
+      document.activeElement.blur();
+    }
+    setDrawerOpen(false);
+  };
+
+  const isHidden = hidden && !drawerOpen;
+
+  const headerClassNames = [
+    'site-header',
+    'site-header--solid',
+    scrolled ? 'site-header--scrolled-shadow' : '',
+    isHidden ? 'site-header--hidden' : '',
+    drawerOpen ? 'site-header--menu-active' : '',
+  ].filter(Boolean).join(' ');
 
   return (
     <>
-      <header className={`site-header ${headerClass}`}>
-        <Link href="/" className="site-header__logo">
-          Griyacipta Kreasi Perdana
-        </Link>
+      <header className={headerClassNames}>
+        <div className="site-header__container">
+          <Link href="/" className="site-header__logo" aria-label="Griyacipta Kreasi Perdana - Beranda">
+            <span className="site-header__logo-brand">Griyacipta</span>
+            <span className="site-header__logo-sub">Kreasi Perdana</span>
+          </Link>
 
-        <nav className="site-header__nav" aria-label="Navigasi utama">
-          {navLinks.map((link) => (
-            <Link key={link.href} href={link.href}>{link.label}</Link>
-          ))}
-        </nav>
+          <nav className="site-header__nav" aria-label="Navigasi utama">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`site-header__nav-link ${isActive ? 'site-header__nav-link--active' : ''}`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
 
-        <div className="site-header__cta-wrapper">
-          <Link href="/konsultasi" className="site-header__cta">Konsultasi</Link>
+          <div className="site-header__cta-wrapper">
+            <Link href="/konsultasi" className="site-header__cta">
+              <span>Konsultasi</span>
+              <ArrowUpRight className="site-header__cta-icon" size={15} />
+            </Link>
+          </div>
+
+          <button
+            ref={menuButtonRef}
+            className="site-header__menu-btn"
+            onClick={() => setDrawerOpen((prev) => !prev)}
+            aria-label={drawerOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi'}
+            aria-expanded={drawerOpen}
+            aria-controls="mobile-navigation"
+          >
+            {drawerOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </div>
-
-        <button
-          ref={menuButtonRef}
-          className="site-header__menu-btn"
-          onClick={() => setDrawerOpen(true)}
-          aria-label="Buka menu navigasi"
-          aria-expanded={drawerOpen}
-          aria-controls="mobile-navigation"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
       </header>
 
+      {/* Backdrop overlay for mobile drawer */}
       <div
+        className={`mobile-drawer__backdrop ${drawerOpen ? 'mobile-drawer__backdrop--visible' : ''}`}
+        onClick={closeDrawer}
+        aria-hidden="true"
+      />
+
+      {/* Mobile Drawer Panel */}
+      <aside
         id="mobile-navigation"
         ref={drawerRef}
         className={`mobile-drawer ${drawerOpen ? 'mobile-drawer--open' : ''}`}
@@ -111,24 +176,51 @@ export default function Header() {
         aria-label="Menu navigasi"
         aria-hidden={!drawerOpen}
       >
-        <button
-          className="mobile-drawer__close"
-          onClick={closeDrawer}
-          aria-label="Tutup menu"
-        >
-          &#x2715;
-        </button>
+        <div className="mobile-drawer__header">
+          <div className="mobile-drawer__brand">
+            <span className="mobile-drawer__brand-main">Griyacipta</span>
+            <span className="mobile-drawer__brand-tag">Design &amp; Build</span>
+          </div>
+          <button
+            className="mobile-drawer__close-btn"
+            onClick={closeDrawer}
+            aria-label="Tutup menu"
+          >
+            <X size={20} />
+          </button>
+        </div>
+
         <nav className="mobile-drawer__nav" aria-label="Navigasi mobile">
-          {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} onClick={closeDrawer}>
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={closeDrawer}
+                className={`mobile-drawer__nav-item ${isActive ? 'mobile-drawer__nav-item--active' : ''}`}
+              >
+                <span>{link.label}</span>
+                <ArrowUpRight size={18} className="mobile-drawer__item-icon" />
+              </Link>
+            );
+          })}
         </nav>
-        <Link href="/konsultasi" className="mobile-drawer__cta" onClick={closeDrawer}>
-          Mulai Konsultasi
-        </Link>
-      </div>
+
+        <div className="mobile-drawer__footer">
+          <Link
+            href="/konsultasi"
+            className="mobile-drawer__cta"
+            onClick={closeDrawer}
+          >
+            <span>Mulai Konsultasi Gratis</span>
+            <ArrowUpRight size={16} />
+          </Link>
+          <p className="mobile-drawer__note">
+            Wujudkan hunian &amp; ruang impian Anda bersama konsultan interior berpengalaman.
+          </p>
+        </div>
+      </aside>
     </>
   );
 }
