@@ -21,7 +21,7 @@ export default function DesignStyles() {
         <ScrollReveal delay={150}>
           <HorizontalCarousel className="style-grid">
             {designStyles.map((style) => (
-              <Link key={style.id} href={`/gaya/${style.id}?ref=gaya`} className="style-card">
+              <Link key={style.id} href={`/gaya?style=${style.id}&ref=gaya`} className="style-card">
                 <div className="style-card__image">
                   <Image src={style.image} alt={style.title} fill sizes="(max-width: 1024px) 76vw, 400px" style={{ objectFit: 'cover' }} />
                 </div>

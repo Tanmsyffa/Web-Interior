@@ -1613,13 +1613,13 @@ input:focus-visible {
   .process-progress__nav { margin-top: var(--space-3); }
 }
 /* ============ HERO TEXT LEGIBILITY ============ */
-.hero__eyebrow { display: inline-flex; width: fit-content; align-items: center; padding: 7px 10px; border: 1px solid rgba(255, 255, 255, 0.28); border-radius: 999px; background: rgba(16, 20, 18, 0.36); color: var(--color-white); font-weight: 750; letter-spacing: 0.09em; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7); }
+.hero__eyebrow { display: inline-flex; width: fit-content; align-items: center; color: var(--color-sand); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7); }
 .hero__content h1 { text-shadow: 0 2px 14px rgba(0, 0, 0, 0.48); }
 .hero__content > p:not(.hero__eyebrow) { text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7); }
 
 @media (max-width: 768px) {
   .hero__overlay { background: linear-gradient(180deg, rgba(15, 19, 17, 0.28) 0%, rgba(15, 19, 17, 0.42) 42%, rgba(15, 19, 17, 0.82) 100%); }
-  .hero__eyebrow { margin-bottom: 12px; padding: 6px 9px; font-size: 10px; letter-spacing: 0.08em; }
+  .hero__eyebrow { margin-bottom: 12px; font-size: 11px; letter-spacing: 0.1em; }
   .hero__content h1 { font-size: 33px; font-weight: 780; line-height: 1.02; }
   .hero__content > p:not(.hero__eyebrow) { font-size: 14px; font-weight: 570; line-height: 1.55; }
 }

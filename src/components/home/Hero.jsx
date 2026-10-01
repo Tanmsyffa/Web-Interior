@@ -33,7 +33,7 @@ export default function Hero() {
       <div className="hero__overlay" />
       <div className="container">
         <div className="hero__content fade-up visible">
-          <p className="section-label hero__eyebrow">Interior Design &middot; Custom Furniture</p>
+          <p className="section-label hero__eyebrow">Design &amp; Build</p>
           <h1>Ruang yang dirancang untuk hidup lebih baik.</h1>
           <p>Desain interior dan furniture custom yang dirancang sesuai karakter, kebutuhan, dan cara Anda menggunakan ruang.</p>
           <div className="hero__actions">

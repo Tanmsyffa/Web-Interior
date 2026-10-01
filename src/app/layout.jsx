@@ -28,7 +28,7 @@ export const viewport = {
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Griyacipta Kreasi Perdana | Interior Design & Custom Furniture",
+  title: "Griyacipta Kreasi Perdana | Design & Build",
   description: siteDescription,
   alternates: { canonical: '/' },
   openGraph: {
@@ -36,13 +36,13 @@ export const metadata = {
     locale: "id_ID",
     url: "/",
     siteName: "Griyacipta Kreasi Perdana",
-    title: "Griyacipta Kreasi Perdana | Interior Design & Custom Furniture",
+    title: "Griyacipta Kreasi Perdana | Design & Build",
     description: siteDescription,
     images: [{ url: socialImage, width: 1200, height: 630, alt: 'Griyacipta Kreasi Perdana — desain interior dan furniture custom' }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Griyacipta Kreasi Perdana | Interior Design & Custom Furniture",
+    title: "Griyacipta Kreasi Perdana | Design & Build",
     description: siteDescription,
     images: [twitterImage],
   },
